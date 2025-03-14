@@ -1,0 +1,32 @@
+header {
+    background-color: #d1d1d1 !important; 
+    color: white !important; 
+    padding: 15px;
+    text-align: center;
+}
+
+
+
+.navbar .nav-link {
+    color: rgb(3, 3, 3) !important; 
+    min-width: 200px; /* Adjust width as needed */
+    max-width: 300px; /* Prevents excessive stretching */
+    text-align: left; /* Align text properly */
+}
+.navbar-brand {
+    color: rgb(0, 0, 0) !important; 
+   
+    font-size: 1.5rem; 
+}
+
+ footer {
+        background-color: #ffffff; 
+        color: rgb(0, 0, 0); 
+        padding: 15px;
+        text-align: center;
+    }
+    .logo{
+        width: 60px;  /* Adjust width */
+        height: auto; /* Keeps aspect ratio */
+        margin-right: 5px; /* Space between logo and text */
+    }
