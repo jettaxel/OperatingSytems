@@ -1,47 +1,287 @@
+/* Base Styles - Gray Monochromatic */
+:root {
+    --primary-color: #555555;
+    --secondary-color: #333333;
+    --accent-color: #777777;
+    --light-color: #f5f5f5;
+    --dark-color: #222222;
+    --text-color: #333333; /* Dark gray text */
+    --background-color: #e0e0e0; /* Light gray background */
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
 header {
-    background-color: #d1d1d1 !important; 
-    color: white !important; 
-    padding: 15px;
-    text-align: center;
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color)) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
+header.scrolled {
+    background: rgba(51, 51, 51, 0.95) !important;
+    backdrop-filter: blur(10px);
+    padding: 5px 0;
 }
 
-.navbar .nav-link {
-    color: rgb(3, 3, 3) !important; 
-    min-width: 200px; /* Adjust width as needed */
-    max-width: 300px; /* Prevents excessive stretching */
-    text-align: left; /* Align text properly */
-}
 .navbar-brand {
-    color: rgb(0, 0, 0) !important; 
-   
-    font-size: 1.5rem; 
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    color: var(--light-color) !important;
 }
 
-footer {
-    position: bottom;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #6f6f6f;
-    color: white;
-    padding: 10px 15px;
-    text-align: left;
-    border-top: 1px solid #ccc;
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .logo {
-    width: 60px;  /* Adjust width */
-    height: 60px; /* Make it a perfect circle */
-    border-radius: 20%; /* Makes it round */
-    object-fit: cover; /* Ensures it fills the space properly */
-    margin-right: 10px; /* Space between logo and text */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--primary-color);
+    transition: all var(--transition-speed) ease;
 }
 
-    .left-align {
-        text-align: left;
+.navbar-brand:hover .logo {
+    transform: rotate(15deg);
+    border-color: var(--light-color);
+}
+
+/* Navigation Styles */
+.navbar-nav {
+    gap: 10px;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+    text-align: center;
+    color: var(--light-color) !important;
+}
+
+.nav-link:not(.dropdown-toggle)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--light-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover:not(.dropdown-toggle)::after {
+    width: 80%;
+}
+
+.dropdown-menu {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.dropdown-item {
+    color: var(--light-color);
+    padding: 10px 20px;
+    transition: all var(--transition-speed) ease;
+    position: relative;
+}
+
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background-color: var(--light-color);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform var(--transition-speed) ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(85, 85, 85, 0.2);
+    padding-left: 25px;
+}
+
+.dropdown-item:hover::before {
+    transform: scaleY(1);
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 30px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.left-align {
+    text-align: left;
+}
+
+/* Video Container Styles */
+.ratio {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed) ease;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.ratio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Task Section Styles */
+.task-container {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all var(--transition-speed) ease;
+    border: 1px solid #ddd;
+}
+
+.task-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.task-container h2 {
+    color: var(--primary-color);
+}
+
+.task-container p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* Footer Styles */
+footer {
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    color: var(--light-color);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .navbar-nav {
+        gap: 5px;
     }
+    
+    .nav-link {
+        padding: 8px 10px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
